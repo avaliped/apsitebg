@@ -35,7 +35,7 @@ function EnrollmentModal({ onClose }: { onClose: () => void }) {
 
   const continueOnWhatsApp = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const message = encodeURIComponent('Olá! Li as informações sobre o processo de adesão ao AvaliPed e gostaria de continuar a conversa para receber orientação.');
+    const message = encodeURIComponent('Olá! Gostaria de receber mais esclarecimentos sobre o processo de adesão ao AvaliPed e saber como devo proceder.');
     window.location.href = `https://wa.me/${whatsappNumber}?text=${message}`;
   };
 
@@ -45,17 +45,20 @@ function EnrollmentModal({ onClose }: { onClose: () => void }) {
         <button type="button" className="enrollment-close" onClick={onClose} aria-label="Fechar formulário"><X size={20} /></button>
         <div className="landing-kicker">Adesão ao AvaliPed</div>
         <h2 id="enrollment-title">Como aderir ao AvaliPed</h2>
-        <p className="enrollment-welcome">Olá, seja bem-vindo(a) ao AvaliPed, a ferramenta de gestão avaliativa destinada a apoiar o trabalho dos professores. O processo de adesão decorre em três etapas principais:</p>
+        <p className="enrollment-welcome">Olá, seja bem-vindo(a) ao AvaliPed! O processo de adesão decorre em três etapas principais:</p>
         <div className="enrollment-steps">
-          <article><b>1.º Cadastro do professor e da escola</b><p>Faça o cadastro no aplicativo com os seus dados, os da escola e as turmas e disciplinas que pretende utilizar. <a href="https://gestaoavaliativa.ai.studio" target="_blank" rel="noreferrer">Aceda ao aplicativo AvaliPed</a>. Antes de iniciar o cadastro, leia também as etapas seguintes.</p></article>
-          <article><b>2.º Proposta e pagamento</b><p>Depois de recebermos e verificarmos o cadastro, enviaremos uma proposta com o plano, o valor, o período de utilização e os dados das contas oficiais. Só pague depois de receber essa proposta. Em seguida, envie o comprovativo nesta conversa. Confirmaremos o recebimento e emitiremos o recibo.</p></article>
-          <article><b>3.º Envio das listas e preparação</b><p>Com o pagamento confirmado, enviaremos um modelo organizado de acordo com as turmas do cadastro. Preencha o número e o nome completo dos alunos; o sexo é opcional, se solicitado no modelo. Não envie documentos de identificação, fotografias, contactos, moradas ou dados de saúde. Se necessário, poderá enviar uma fotografia legível da pauta, conforme orientação da equipa. Depois, conferimos os dados e preparamos a escola, as turmas, as disciplinas e os alunos. A conta pode aparecer activa enquanto esta preparação decorre; isso não significa que o processo terminou.</p></article>
+          <article><b>1.º Cadastro do professor e da escola</b><p>Faça o cadastro no aplicativo com os seus dados e os da escola. Antes de iniciar o cadastro, leia também as etapas seguintes. Utilize um e-mail a que tenha acesso e defina uma palavra-passe própria e segura.</p></article>
+          <article><b>2.º Proposta e pagamento</b><p>Depois de recebermos e verificarmos o cadastro, enviaremos uma proposta com o plano, o valor, o período de utilização e os dados oficiais para pagamento. Só efectue o pagamento depois de receber a proposta. Em seguida, envie o comprovativo nesta conversa. Confirmaremos o recebimento e emitiremos o recibo. Se pretende uma conta institucional para acompanhamento do corpo docente, informe que se trata de uma adesão institucional nesta conversa, ao enviar o comprovativo.</p></article>
+          <article><b>3.º Envio das listas e preparação</b><p>Com o pagamento confirmado, envie as listas nominais das turmas em fotografia bem legível (evite listas manuscritas) ou em documento Excel, Word ou PDF. Inclua o número de ordem, o nome do aluno e o sexo. Não envie documentos de identificação, fotografias dos alunos, contactos, moradas ou dados de saúde. Informe também a classe e as disciplinas que lecciona; no Ensino Primário ou nas etapas, basta informar a classe. Depois, conferimos os dados e preparamos a escola, as turmas, as disciplinas e os alunos. A conta pode aparecer activa enquanto esta preparação decorre; isso não significa que o processo terminou.</p></article>
         </div>
-        <aside className="enrollment-security"><b>Segurança e prevenção de burlas</b><ul><li>Não pague antes de receber a proposta e os dados oficiais da equipa AvaliPed.</li><li>Confirme que os dados de pagamento correspondem aos da proposta.</li><li>Nunca partilhe a sua palavra-passe. A equipa não precisa dela para preparar a escola.</li><li>Use um e-mail a que tenha acesso e defina uma palavra-passe própria e segura.</li></ul></aside>
+        <aside className="enrollment-security"><b>Segurança e prevenção de burlas</b><ul><li>Não pague antes de receber a proposta e os dados oficiais da equipa AvaliPed.</li><li>Confirme que os dados de pagamento correspondem aos indicados na proposta.</li><li>Nunca partilhe a sua palavra-passe. A equipa não precisa dela para preparar a escola.</li><li>Utilize um e-mail a que tenha acesso e defina uma palavra-passe própria e segura.</li></ul></aside>
         <p className="enrollment-before-continue"><b>Antes de continuar:</b> leia todas as etapas. O contacto pelo WhatsApp serve para pedir orientação e esclarecer dúvidas; não confirma adesão nem compromisso de pagamento.</p>
         <form className="enrollment-form" onSubmit={continueOnWhatsApp}>
           <label className="enrollment-consent"><input type="checkbox" checked={hasRead} onChange={(event) => setHasRead(event.target.checked)} /> Li e compreendi as etapas e quero continuar a conversa pelo WhatsApp.</label>
-          <button type="submit" className="landing-button landing-button-primary" disabled={!hasRead}><MessageCircle size={17} /> Continuar pelo WhatsApp <ArrowRight size={16} /></button>
+          <div className="enrollment-actions">
+            <a className="landing-button landing-button-primary" href="https://gestaoavaliativa.ai.studio/" target="_blank" rel="noreferrer"><GraduationCap size={18} /> Efectuar inscrição</a>
+            <button type="submit" className="landing-button enrollment-whatsapp-button" disabled={!hasRead}><MessageCircle size={17} /> Mais esclarecimentos pelo WhatsApp <ArrowRight size={16} /></button>
+          </div>
         </form>
       </section>
     </div>

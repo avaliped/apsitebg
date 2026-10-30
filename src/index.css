@@ -319,7 +319,9 @@
 .enrollment-form { display: grid; gap: 12px; margin-top: 18px; }
 .enrollment-consent { display: flex; align-items: flex-start; gap: 9px; color: var(--lp-ink); font-size: 13px; font-weight: 700; }
 .enrollment-consent input { width: 17px; height: 17px; margin: 0; accent-color: var(--lp-blue); flex: 0 0 auto; }
-.enrollment-form .landing-button { justify-self: start; border: 0; cursor: pointer; }
-.enrollment-form .landing-button:disabled { opacity: .5; cursor: not-allowed; box-shadow: none; transform: none; }
+.enrollment-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.enrollment-actions .landing-button { width: 100%; min-height: 48px; box-sizing: border-box; }
+.enrollment-whatsapp-button { justify-content: center; align-items: center; gap: 8px; padding: 12px 15px; border: 1px solid #b9cde8; border-radius: 9px; color: var(--lp-blue); background: #fff; font-family: inherit; font-size: 13px; font-weight: 750; cursor: pointer; }
+.enrollment-whatsapp-button:disabled { opacity: .5; cursor: not-allowed; box-shadow: none; transform: none; }
 .landing-footer-contact .enrollment-link { color: inherit; }
-@media (max-width: 600px) { .enrollment-overlay { padding: 10px; align-items: end; }.enrollment-dialog { max-height: 94vh; padding: 25px 18px 20px; border-radius: 16px 16px 10px 10px; }.enrollment-steps { gap: 8px; }.enrollment-steps article { padding: 11px 12px; }.enrollment-steps p { font-size: 11px; }.enrollment-form .landing-button { justify-self: stretch; } }
+@media (max-width: 600px) { .enrollment-overlay { padding: 10px; align-items: end; }.enrollment-dialog { max-height: 94vh; padding: 25px 18px 20px; border-radius: 16px 16px 10px 10px; }.enrollment-steps { gap: 8px; }.enrollment-steps article { padding: 11px 12px; }.enrollment-steps p { font-size: 11px; }.enrollment-actions { grid-template-columns: 1fr; }.enrollment-actions .landing-button { justify-self: stretch; } }
