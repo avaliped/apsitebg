@@ -302,3 +302,19 @@
 .doc-gallery-dots button.is-active { background: var(--lp-blue); width: 26px; }
 @media (max-width: 640px) { .doc-gallery-prev { left: 4px; } .doc-gallery-next { right: 4px; } .doc-gallery-arrow { top: 34%; width: 40px; height: 40px; } .doc-gallery-slide figcaption { padding: 12px 6px 0; } }
 @media (max-width: 480px) { .landing-nav-login { padding: 9px 11px; font-size: 11px; gap: 4px; } .landing-brand small { display: none; } }
+
+.enrollment-overlay { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 18px; background: #061d3dcc; overflow-y: auto; }
+.enrollment-dialog { position: relative; width: min(680px, 100%); max-height: min(92vh, 900px); overflow-y: auto; padding: 32px; border-radius: 16px; background: #fff; box-shadow: 0 24px 70px #061d3d55; }
+.enrollment-dialog h2 { margin: 9px 40px 20px 0; font-size: clamp(28px, 5vw, 38px); letter-spacing: -.05em; line-height: 1.1; }
+.enrollment-close { position: absolute; top: 18px; right: 18px; display: grid; place-items: center; width: 38px; height: 38px; border: 1px solid var(--lp-line); border-radius: 10px; color: var(--lp-ink); background: white; cursor: pointer; }
+.enrollment-steps { display: grid; gap: 11px; }
+.enrollment-steps article { padding: 14px 16px; border: 1px solid #e2eaf4; border-radius: 10px; background: #f8fbff; }
+.enrollment-steps b { color: var(--lp-blue-dark); font-size: 13px; }
+.enrollment-steps p { margin: 6px 0 0; color: #5d708a; font-size: 12px; line-height: 1.55; }
+.enrollment-form { display: grid; gap: 12px; margin-top: 18px; }
+.enrollment-consent { display: flex; align-items: flex-start; gap: 9px; color: var(--lp-ink); font-size: 13px; font-weight: 700; }
+.enrollment-consent input { width: 17px; height: 17px; margin: 0; accent-color: var(--lp-blue); flex: 0 0 auto; }
+.enrollment-privacy-note { margin: 0; color: #718198; font-size: 11px; line-height: 1.5; }
+.enrollment-form .landing-button { justify-self: start; border: 0; cursor: pointer; }
+.landing-footer-contact .enrollment-link { color: inherit; }
+@media (max-width: 600px) { .enrollment-overlay { padding: 10px; align-items: end; }.enrollment-dialog { max-height: 94vh; padding: 25px 18px 20px; border-radius: 16px 16px 10px 10px; }.enrollment-steps { gap: 8px; }.enrollment-steps article { padding: 11px 12px; }.enrollment-steps p { font-size: 11px; }.enrollment-form .landing-button { justify-self: stretch; } }
