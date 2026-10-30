@@ -2,6 +2,10 @@
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: '/apsite/',
+  base: '/apsitebg/',
   plugins: [react()],
+  build: {
+    outDir: 'docs',
+    emptyOutDir: true,
+  },
 });
