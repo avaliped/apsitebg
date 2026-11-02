@@ -1,4 +1,4 @@
-import { useEffect, useState, type FormEvent, type ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import {
   ArrowRight,
   BarChart3,
@@ -25,16 +25,25 @@ function WhatsAppLink({ children, className = '', onClick }: { children: ReactNo
   );
 }
 
+const ACCESS_START_AT = new Date('2026-11-16T00:00:00+01:00').getTime();
+
 function EnrollmentModal({ onClose }: { onClose: () => void }) {
   const [hasRead, setHasRead] = useState(false);
+  const [now, setNow] = useState(() => Date.now());
+  const accessAvailable = now >= ACCESS_START_AT;
+  const daysUntilAccess = Math.max(0, Math.ceil((ACCESS_START_AT - now) / 86_400_000));
+
   useEffect(() => {
     const closeOnEscape = (event: KeyboardEvent) => { if (event.key === 'Escape') onClose(); };
     window.addEventListener('keydown', closeOnEscape);
-    return () => window.removeEventListener('keydown', closeOnEscape);
+    const countdownTimer = window.setInterval(() => setNow(Date.now()), 60_000);
+    return () => {
+      window.removeEventListener('keydown', closeOnEscape);
+      window.clearInterval(countdownTimer);
+    };
   }, [onClose]);
 
-  const continueOnWhatsApp = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const continueOnWhatsApp = () => {
     const message = encodeURIComponent('Olá! Gostaria de receber mais esclarecimentos sobre o processo de adesão ao AvaliPed e saber como devo proceder.');
     window.location.href = `https://wa.me/${whatsappNumber}?text=${message}`;
   };
@@ -45,26 +54,44 @@ function EnrollmentModal({ onClose }: { onClose: () => void }) {
         <button type="button" className="enrollment-close" onClick={onClose} aria-label="Fechar formulário"><X size={20} /></button>
         <div className="landing-kicker">Adesão ao AvaliPed</div>
         <h2 id="enrollment-title">Como aderir ao AvaliPed</h2>
-        <p className="enrollment-welcome">Olá, seja bem-vindo(a) ao AvaliPed! O processo de adesão decorre em três etapas principais:</p>
+        <p className="enrollment-welcome">Olá, seja bem-vindo(a) ao AvaliPed! Consulte as orientações para aderir.</p>
+        <div className="enrollment-access-notice" role="status" aria-live="polite">
+          {accessAvailable ? (
+            <strong>O acesso ao app está disponível desde 16 de novembro de 2026.</strong>
+          ) : (
+            <>
+              <strong>Faltam {daysUntilAccess} {daysUntilAccess === 1 ? 'dia' : 'dias'} para abrir o acesso.</strong>
+              <span>A inscrição no app abre em 16 de novembro de 2026. Até lá, fale com a equipa pelo WhatsApp.</span>
+            </>
+          )}
+        </div>
         <div className="enrollment-steps">
-          <article><b>1.º Cadastro do professor e da escola</b><p>Faça o cadastro no aplicativo com os seus dados e os da escola. Antes de iniciar o cadastro, leia também as etapas seguintes. Utilize um e-mail a que tenha acesso e defina uma palavra-passe própria e segura.</p></article>
-          <article><b>2.º Proposta e pagamento</b><p>Depois de recebermos e verificarmos o cadastro, enviaremos uma proposta com o plano, o valor, o período de utilização e os dados oficiais para pagamento. Só efectue o pagamento depois de receber a proposta. Em seguida, envie o comprovativo nesta conversa. Confirmaremos o recebimento e emitiremos o recibo. Se pretende uma conta institucional para acompanhamento do corpo docente, informe que se trata de uma adesão institucional nesta conversa, ao enviar o comprovativo.</p></article>
-          <article><b>3.º Envio das listas e preparação</b><p>Com o pagamento confirmado, envie as listas nominais das turmas em fotografia bem legível (evite listas manuscritas) ou em documento Excel, Word ou PDF. Inclua o número de ordem, o nome do aluno e o sexo. Não envie documentos de identificação, fotografias dos alunos, contactos, moradas ou dados de saúde. Informe também a classe e as disciplinas que lecciona; no Ensino Primário ou nas etapas, basta informar a classe. Depois, conferimos os dados e ativamos a conta, num período máximo de 24 horas. Note que a conta pode já aparecer activa enquanto esta preparação decorre; isso não significa que o processo terminou.</p></article>
+          <article>
+            <b>{accessAvailable ? '1.º Cadastro do professor e da escola' : '1.º Contacto pelo WhatsApp'}</b>
+            <p>{accessAvailable
+              ? 'Faça o cadastro no aplicativo com os seus dados e os da escola. Utilize um e-mail a que tenha acesso e defina uma palavra-passe própria e segura.'
+              : 'Até 16 de novembro, o cadastro no app ainda não está disponível. Contacte a equipa pelo WhatsApp para receber orientação sobre a pré-venda.'}</p>
+          </article>
+          <article>
+            <b>2.º Proposta e pagamento</b>
+            <p>Depois de recebermos e verificarmos as informações da adesão, enviaremos uma proposta com o plano, o valor, o período de utilização e os dados oficiais para pagamento. Só efectue o pagamento depois de receber a proposta. Em seguida, envie o comprovativo nesta conversa. Confirmaremos o recebimento e emitiremos o recibo. Se pretende uma conta institucional para acompanhamento do corpo docente, informe que se trata de uma adesão institucional nesta conversa.</p>
+          </article>
+          <article>
+            <b>3.º Envio das listas e preparação</b>
+            <p>Com o pagamento confirmado, envie as listas nominais das turmas em fotografia bem legível (evite listas manuscritas) ou em documento Excel, Word ou PDF. Inclua o número de ordem, o nome do aluno e o sexo. Não envie documentos de identificação, fotografias dos alunos, contactos, moradas ou dados de saúde. Informe também a classe e as disciplinas que lecciona; no Ensino Primário ou nas etapas, basta informar a classe. A equipa conferirá os dados e preparará a conta para o início do acesso.</p>
+          </article>
         </div>
         <aside className="enrollment-security"><b>Segurança e prevenção de burlas</b><ul><li>Não pague antes de receber a proposta e os dados oficiais da equipa AvaliPed.</li><li>Confirme que os dados de pagamento correspondem aos indicados na proposta.</li><li>Nunca partilhe a sua palavra-passe. A equipa não precisa dela para preparar a escola.</li><li>Utilize um e-mail a que tenha acesso e defina uma palavra-passe própria e segura.</li></ul></aside>
-        <p className="enrollment-before-continue"><b>Antes de continuar:</b> leia todas as etapas. O contacto pelo WhatsApp serve para pedir orientação e esclarecer dúvidas; não confirma adesão nem compromisso de pagamento.</p>
-        <form className="enrollment-form" onSubmit={continueOnWhatsApp}>
-          <label className="enrollment-consent"><input type="checkbox" checked={hasRead} onChange={(event) => setHasRead(event.target.checked)} /> Li e compreendi as etapas e quero continuar.</label>
-          <div className="enrollment-actions">
-            <a className="landing-button landing-button-primary" href="https://gestaoavaliativa.ai.studio/" target="_blank" rel="noreferrer" aria-disabled={!hasRead} onClick={(event) => { if (!hasRead) event.preventDefault(); }}><GraduationCap size={18} /> Efectuar inscrição</a>
-            <button type="submit" className="landing-button enrollment-whatsapp-button" disabled={!hasRead}><MessageCircle size={17} /> Puxar via WhatsApp <ArrowRight size={16} /></button>
-          </div>
-        </form>
+        <p className="enrollment-before-continue"><b>Antes de continuar:</b> leia as etapas. {accessAvailable ? 'Pode efectuar a inscrição ou falar connosco pelo WhatsApp.' : 'Até 16 de novembro, o WhatsApp é o único canal de contacto. A conversa não confirma adesão nem compromisso de pagamento.'}</p>
+        <div className="enrollment-consent"><label><input type="checkbox" checked={hasRead} onChange={(event) => setHasRead(event.target.checked)} /> Li e compreendi as etapas e quero continuar.</label></div>
+        <div className={`enrollment-actions ${accessAvailable ? '' : 'enrollment-actions-single'}`}>
+          {accessAvailable && <a className="landing-button landing-button-primary" href="https://gestaoavaliativa.ai.studio/" target="_blank" rel="noreferrer"><GraduationCap size={18} /> Efectuar inscrição</a>}
+          <button type="button" className="landing-button enrollment-whatsapp-button" disabled={!hasRead} onClick={continueOnWhatsApp}><MessageCircle size={17} /> Contactar pelo WhatsApp <ArrowRight size={16} /></button>
+        </div>
       </section>
     </div>
   );
 }
-
 export function LandingPage() {
   const [enrollmentOpen, setEnrollmentOpen] = useState(false);
   const openEnrollment = () => setEnrollmentOpen(true);
