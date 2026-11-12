@@ -6,8 +6,14 @@ import miniPautaConsolidada from '../assets/documentos/mini-pauta-consolidada.pn
 import boletimConsolidado from '../assets/documentos/boletim-estatistico-consolidado.png';
 import actaCoordenacao from '../assets/documentos/acta-coordenacao-lingua-portuguesa.jpg';
 import justificativoFaltas from '../assets/documentos/justificativo-de-faltas.png';
+import avalipedNoTelemovel from '../assets/documentos/avaliped-no-telemovel.png';
 
 const documentos = [
+  {
+    titulo: 'AvaliPed no telemóvel',
+    descricao: 'Visão da gestão avaliativa, pedagógica e dos documentos no telemóvel.',
+    imagem: avalipedNoTelemovel,
+  },
   {
     titulo: 'Mini-Pauta Parcial',
     descricao: 'Pauta nominal do trimestre, com classificação, valor por extenso e situação de cada aluno.',
