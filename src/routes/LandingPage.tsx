@@ -9,7 +9,6 @@ import {
   Menu,
   MessageCircle,
   ShieldCheck,
-  Sparkles,
   Users,
   X,
 } from 'lucide-react';
@@ -99,31 +98,16 @@ export function LandingPage() {
     <main className="landing-page">
       <nav className="landing-nav"><a href="#inicio" className="landing-brand"><span className="landing-brand-mark"><GraduationCap size={22} /></span><span><strong>Avali</strong>Ped<small>Gestão avaliativa</small></span></a><WhatsAppLink className="landing-nav-login" onClick={openEnrollment}><MessageCircle size={15} /> Quero conhecer o AvaliPed</WhatsAppLink></nav>
 
-      <section id="inicio" className="landing-hero landing-container">
-        <div className="landing-hero-copy">
-          <div className="landing-eyebrow"><Sparkles size={15} /> Feito para a realidade das escolas angolanas</div>
-          <h1>Menos papelada.<br /><span>Mais controlo.</span></h1>
-          <p className="landing-hero-lead">O AvaliPed ajuda professores e responsáveis pedagógicos a organizar avaliações, turmas e documentos num só lugar.</p>
-          <div className="landing-actions">
-            <WhatsAppLink className="landing-button landing-button-primary" onClick={openEnrollment}><MessageCircle size={18} /> Quero conhecer o AvaliPed <ArrowRight size={17} /></WhatsAppLink>
-            
-          </div>
-          <div className="landing-trust-row"><ShieldCheck size={17} /> Contexto autorizado <span /> <ClipboardCheck size={17} /> Documentos organizados <span /> <Users size={17} /> Apoio por WhatsApp</div>
-          <div className="landing-coverage"><GraduationCap size={16} /><span><b>Ensino Primário</b> (inclui Pré-Escolar), <b>I Ciclo</b> e <b>II Ciclo</b></span></div>
-        </div>
-        <div className="landing-hero-visual" aria-label="Pré-visualização do painel do AvaliPed">
-          <div className="landing-glow" />
-          <div className="landing-dashboard">
-            <div className="dashboard-top"><div className="dashboard-logo"><GraduationCap size={14} /></div><span>AvaliPed</span><div className="dashboard-avatar">MP</div></div>
-            <div className="dashboard-welcome"><small>Bom dia, Maria</small><strong>O seu trabalho num só lugar.</strong></div>
-            <div className="dashboard-stat-grid"><div><span>Turmas activas</span><strong>04</strong><small className="stat-positive">+2 este ano</small></div><div><span>Avaliações</span><strong>86%</strong><small className="stat-blue">Em andamento</small></div></div>
-            <div className="dashboard-card"><div className="dashboard-card-heading"><span>As minhas turmas</span><small>Ver todas →</small></div><div className="dashboard-class"><span className="class-icon class-icon-blue"><FileSpreadsheet size={16} /></span><div><strong>6.ª Classe · Turma A</strong><small>Matemática · 28 alunos</small></div><b>92%</b></div><div className="dashboard-class"><span className="class-icon class-icon-green"><ClipboardCheck size={16} /></span><div><strong>5.ª Classe · Turma B</strong><small>Língua Portuguesa · 31 alunos</small></div><b>68%</b></div></div>
-            <div className="dashboard-bottom"><BarChart3 size={17} /><span>O seu próximo documento está pronto para consultar.</span></div>
+      <section id="inicio" className="landing-proof-strip landing-headline-section">
+        <div className="landing-container landing-headline-content">
+          <h1>Lance as notas uma só vez e tenha mini-pautas, estatísticas e pauta final no telemóvel prontos a imprimir.</h1>
+          <p>Pague já o seu Pacote ou Peça a sua demonstração no WhatsApp.</p>
+          <div className="landing-headline-actions">
+            <a className="landing-button landing-button-primary" href="#precos"><GraduationCap size={18} /> Pague já o seu Pacote <ArrowRight size={17} /></a>
+            <WhatsAppLink className="landing-button landing-button-quiet" onClick={openEnrollment}><MessageCircle size={18} /> Peça a sua demonstração no WhatsApp</WhatsAppLink>
           </div>
         </div>
       </section>
-
-      <section className="landing-proof-strip"><div className="landing-container landing-proof-inner"><span>Uma forma mais simples de trabalhar com</span><b>Turmas</b><b>Avaliações</b><b>Resultados</b><b>Documentos</b></div></section>
 
       <section id="ver-por-dentro" className="landing-section landing-product-section"><div className="landing-container"><div className="landing-section-heading"><div><div className="landing-kicker">Veja por dentro</div><h2>O professor reconhece<br /><em>o seu dia de trabalho.</em></h2></div><p>Do acompanhamento das turmas à emissão dos documentos, o AvaliPed foi pensado para ser usado no telemóvel, com botões claros e informação no contexto certo.</p></div><div className="landing-phone-grid"><div className="landing-phone-card"><div className="phone-label">Gestão Avaliativa</div><div className="landing-phone"><div className="phone-status">09:50 <span>4G&nbsp; ◉ 95%</span></div><div className="phone-header"><span className="phone-mark"><GraduationCap size={13} /></span><b>AvaliPed</b><small>☰</small></div><div className="phone-content"><small className="phone-kicker">ÁREA OPERACIONAL</small><h3>Gestão Avaliativa</h3><p>Aceda às operações de acompanhamento e avaliação dos alunos.</p><div className="phone-tile"><span className="phone-tile-icon"><Users size={17} /></span><b>Turmas</b><small>Consulte turmas, matrículas e listas nominais.</small><a href="#pre-venda">Gerir turmas →</a></div><div className="phone-tile"><span className="phone-tile-icon"><FileSpreadsheet size={17} /></span><b>Mini-pautas</b><small>Registe e consulte as avaliações trimestrais.</small><a href="#pre-venda">Abrir mini-pautas →</a></div></div><div className="phone-bottom"><b>▣ Gestão Avaliativa</b><span>⌂ Gestão Pedagógica</span></div></div></div><div className="landing-phone-card"><div className="phone-label">Gestão Pedagógica</div><div className="landing-phone"><div className="phone-status">09:50 <span>4G&nbsp; ◉ 95%</span></div><div className="phone-header"><span className="phone-mark"><GraduationCap size={13} /></span><b>AvaliPed</b><small>☰</small></div><div className="phone-content"><small className="phone-kicker">GESTÃO PEDAGÓGICA</small><h3>Pedagogia</h3><p>Planeamento, execução e organização do trabalho docente.</p><div className="phone-tile"><span className="phone-tile-icon"><ClipboardCheck size={17} /></span><b>Planificação Quinzenal</b><small>Elabore e acompanhe a planificação das turmas.</small><a href="#pre-venda">Gerir →</a></div><div className="phone-tile"><span className="phone-tile-icon"><BarChart3 size={17} /></span><b>Planos de Aula</b><small>Registe planos e emita documentos para impressão.</small><a href="#pre-venda">Gerir →</a></div></div><div className="phone-bottom"><span>▣ Gestão Avaliativa</span><b>⌂ Gestão Pedagógica</b></div></div></div><div className="landing-phone-card"><div className="phone-label">Documentos</div><div className="landing-phone"><div className="phone-status">09:51 <span>4G&nbsp; ◉ 95%</span></div><div className="phone-header"><span className="phone-mark"><GraduationCap size={13} /></span><b>AvaliPed</b><small>☰</small></div><div className="phone-content"><div className="phone-period">Período: <b>MT1 (1.º Trimestre)</b></div><div className="phone-document"><FileSpreadsheet size={17} /><b>Mini-Pauta</b><small>Pauta nominal do trimestre seleccionado.</small><strong>?&nbsp; Baixar PDF</strong></div><div className="phone-document"><FileSpreadsheet size={17} /><b>Mini-Pauta Consolidada</b><small>Agrega os três trimestres e a média final.</small><strong>?&nbsp; Baixar PDF</strong></div><div className="phone-document"><BarChart3 size={17} /><b>Estatística Trimestral</b><small>Quadro A4 com a estatística do período.</small><strong>?&nbsp; Baixar PDF</strong></div></div><div className="phone-bottom"><b>▣ Gestão Avaliativa</b><span>⌂ Gestão Pedagógica</span></div></div></div></div><div className="landing-demo-note"><ShieldCheck size={17} /><span><b>Demonstração com dados fictícios.</b> Os nomes dos alunos e a escola apresentados nesta página são apenas exemplos e não representam registos reais.</span></div></div></section>
 
