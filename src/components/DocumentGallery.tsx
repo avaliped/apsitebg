@@ -7,6 +7,7 @@ import boletimConsolidado from '../assets/documentos/boletim-estatistico-consoli
 import actaCoordenacao from '../assets/documentos/acta-coordenacao-lingua-portuguesa.jpg';
 import justificativoFaltas from '../assets/documentos/justificativo-de-faltas.png';
 import avalipedNoTelemovel from '../assets/documentos/avaliped-no-telemovel.png';
+import pautaFinalDemonstracao from '../assets/documentos/pauta-final-demonstracao.png';
 
 const documentos = [
   {
@@ -28,6 +29,11 @@ const documentos = [
     titulo: 'Mini-Pauta Consolidada',
     descricao: 'Agrega os três trimestres, a média final e a situação anual de cada aluno.',
     imagem: miniPautaConsolidada,
+  },
+  {
+    titulo: 'Pauta Final · Exemplo fictício',
+    descricao: 'Modelo de pauta final com classificações por disciplina e espaços para assinaturas.',
+    imagem: pautaFinalDemonstracao,
   },
   {
     titulo: 'Boletim Estatístico Consolidado',
