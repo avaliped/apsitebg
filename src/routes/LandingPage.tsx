@@ -115,11 +115,9 @@ export function LandingPage() {
       <section id="inicio" className="landing-proof-strip landing-headline-section">
         <div className="landing-container landing-audience-grid">
           <article className="landing-audience-card landing-audience-teacher">
-            <span className="landing-audience-label">Para o Professor</span>
             <h1>Professor, lance as notas uma só vez e tenha mini-pautas, estatísticas e pauta final, planificações… no telemóvel prontos a imprimir.</h1>
           </article>
           <article className="landing-audience-card landing-audience-director">
-            <span className="landing-audience-label">Para o Diretor</span>
             <h2>Diretor, pare com a corrida do Gato e Rato! Encontre a dosificação, a nota, as estatísticas do professor da sua escola num só lugar e muito mais.</h2>
           </article>
         </div>
