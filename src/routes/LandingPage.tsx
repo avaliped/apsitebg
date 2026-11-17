@@ -110,7 +110,7 @@ export function LandingPage() {
   const openEnrollment = () => setEnrollmentOpen(true);
   return (
     <main className="landing-page">
-      <nav className="landing-nav"><a href="#inicio" className="landing-brand"><span className="landing-brand-mark"><GraduationCap size={22} /></span><span><strong>Avali</strong>Ped<small>Gestão avaliativa</small></span></a><div className="landing-nav-actions"><a className="landing-nav-login" href="#pacote-professor">SOU PROFESSOR</a><a className="landing-nav-login" href="#pacote-director">SOU DIRECTOR</a></div></nav>
+      <nav className="landing-nav"><a href="#inicio" className="landing-brand"><span className="landing-brand-mark"><GraduationCap size={22} /></span><span><strong>Avali</strong>Ped<small>Gestão avaliativa</small></span></a><div className="landing-nav-actions"><a className="landing-nav-login" href="#pacote-professor">VER PLANOS</a></div></nav>
 
       <section id="inicio" className="landing-proof-strip landing-headline-section">
         <div className="landing-container landing-audience-grid">
